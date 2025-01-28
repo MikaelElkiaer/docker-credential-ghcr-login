@@ -13,7 +13,7 @@ Based on similar tools like
 # How it Works
 
 Uses your GitHub username/password to create a personal access token. Uses the [`gh`](https://github.com/cli/cli)
-utilities to ensure the PAT has `write:packages` access. If it does not, it will
+utilities to ensure the PAT has `read:packages` access. If it does not, it will
 run the web-auth flow from the CLI and overwrite the existing token.
 
 Once that is finished, we just rely on the `gh` configuration files as the source

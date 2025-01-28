@@ -12,7 +12,7 @@ import (
 )
 
 // EnsureValidTokenForHost wil check for an existing token. If one is not found,
-// or found without the required scopes (`write:packages`), a new login flow will
+// or found without the required scopes (`read:packages`), a new login flow will
 // run to get a new one
 func EnsureValidTokenForHost(hostname string, requiredScopes string, version string) error {
 	token, tokenSource := auth.TokenForHost(hostname)
