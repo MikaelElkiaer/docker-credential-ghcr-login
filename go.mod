@@ -7,6 +7,7 @@ toolchain go1.24.3
 require (
 	github.com/cli/cli/v2 v2.74.0
 	github.com/cli/go-gh v1.2.1
+	github.com/cli/go-gh/v2 v2.12.1
 	github.com/docker/docker-credential-helpers v0.9.3
 )
 
@@ -35,7 +36,6 @@ require (
 	github.com/charmbracelet/x/exp/strings v0.0.0-20240722160745-212f7b056ed0 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/cli/go-gh/v2 v2.12.1 // indirect
 	github.com/cli/oauth v1.1.1 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
