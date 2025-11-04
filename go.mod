@@ -7,7 +7,7 @@ toolchain go1.24.3
 require (
 	github.com/cli/cli/v2 v2.74.0
 	github.com/cli/go-gh v1.2.1
-	github.com/cli/go-gh/v2 v2.12.1
+	github.com/cli/go-gh/v2 v2.13.0
 	github.com/docker/docker-credential-helpers v0.9.3
 )
 
