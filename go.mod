@@ -2,7 +2,7 @@ module github.com/bradschwartz/docker-credential-ghcr-login
 
 go 1.24.0
 
-toolchain go1.24.1
+toolchain go1.25.5
 
 require (
 	github.com/cli/cli/v2 v2.74.0
