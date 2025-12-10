@@ -3,7 +3,7 @@ module github.com/bradschwartz/docker-credential-ghcr-login
 go 1.25.0
 
 require (
-	github.com/cli/cli/v2 v2.83.1
+	github.com/cli/cli/v2 v2.83.2
 	github.com/cli/go-gh v1.2.1
 	github.com/cli/go-gh/v2 v2.13.0
 	github.com/docker/docker-credential-helpers v0.9.4
@@ -93,7 +93,7 @@ require (
 	github.com/zalando/go-keyring v0.2.6 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
-	golang.org/x/oauth2 v0.30.0 // indirect
+	golang.org/x/oauth2 v0.33.0 // indirect
 	golang.org/x/sync v0.18.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/term v0.37.0 // indirect
