@@ -5,7 +5,6 @@ go 1.25.0
 require (
 	github.com/cli/cli/v2 v2.83.2
 	github.com/cli/go-gh v1.2.1
-	github.com/cli/go-gh/v2 v2.13.0
 	github.com/docker/docker-credential-helpers v0.9.4
 )
 
@@ -18,7 +17,6 @@ require (
 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
 	github.com/Masterminds/sprig/v3 v3.3.0 // indirect
 	github.com/alecthomas/chroma/v2 v2.20.0 // indirect
-	github.com/alessio/shellescape v1.4.2 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
@@ -36,6 +34,7 @@ require (
 	github.com/charmbracelet/x/exp/strings v0.0.0-20251201173703-9f73bfd934ff // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/cli/browser v1.3.0 // indirect
+	github.com/cli/go-gh/v2 v2.13.0 // indirect
 	github.com/cli/oauth v1.2.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
@@ -93,7 +92,6 @@ require (
 	github.com/zalando/go-keyring v0.2.6 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
-	golang.org/x/oauth2 v0.33.0 // indirect
 	golang.org/x/sync v0.18.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/term v0.37.0 // indirect
