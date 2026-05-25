@@ -5,6 +5,7 @@ go 1.26.0
 require (
 	github.com/cli/cli/v2 v2.92.0
 	github.com/cli/go-gh v1.2.1
+	github.com/cli/go-gh/v2 v2.13.0
 	github.com/docker/docker-credential-helpers v0.9.7
 )
 
@@ -42,7 +43,6 @@ require (
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
 	github.com/charmbracelet/x/windows v0.2.2 // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/cli/go-gh/v2 v2.13.0 // indirect
 	github.com/cli/oauth v1.2.2 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
