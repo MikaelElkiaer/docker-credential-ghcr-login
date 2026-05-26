@@ -3,8 +3,8 @@ package ghcr
 import (
 	"errors"
 
-	"github.com/cli/go-gh/pkg/auth"
-	"github.com/cli/go-gh/pkg/config"
+	"github.com/cli/go-gh/v2/pkg/auth"
+	"github.com/cli/go-gh/v2/pkg/config"
 	"github.com/docker/docker-credential-helpers/credentials"
 	"github.com/docker/docker-credential-helpers/registryurl"
 )
@@ -37,18 +37,18 @@ func (ghcr Ghcr) Get(serverURL string) (string, string, error) {
 	// When pushing to public GitHub, the registry domain is `ghcr.io`
 	// We need to map from that (e.g. in docker.config) to what `gh` knows about
 	// TODO: Enable a config file for custom mappings for enterprise
-	hostname := registryurl.GetHostname(url)
+	hostname := url.Hostname()
 	if hostname == "ghcr.io" {
 		hostname = "github.com"
 	}
 	token, _ := auth.TokenForHost(hostname)
 
-	config, err := config.Read()
+	cfg, err := config.Read(nil)
 	if err != nil {
 		return "", "", err
 	}
 
-	username, err := config.Get([]string{"hosts", hostname, "user"})
+	username, err := cfg.Get([]string{"hosts", hostname, "user"})
 	if err != nil {
 		return "", "", err
 	}
@@ -58,14 +58,14 @@ func (ghcr Ghcr) Get(serverURL string) (string, string, error) {
 
 // List returns the stored URLs and corresponding usernames.
 func (ghcr Ghcr) List() (map[string]string, error) {
-	config, err := config.Read()
+	cfg, err := config.Read(nil)
 	if err != nil {
 		return map[string]string{}, err
 	}
-	hosts, _ := config.Keys([]string{"hosts"})
+	hosts, _ := cfg.Keys([]string{"hosts"})
 	auths := map[string]string{} // maps hostname -> username
 	for _, host := range hosts {
-		username, err := config.Get([]string{"hosts", host, "user"})
+		username, err := cfg.Get([]string{"hosts", host, "user"})
 		if err == nil {
 			auths[host] = username
 		}
@@ -73,3 +73,4 @@ func (ghcr Ghcr) List() (map[string]string, error) {
 
 	return auths, nil
 }
+

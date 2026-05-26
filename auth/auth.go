@@ -1,14 +1,14 @@
 package auth
 
 import (
+	"context"
+	"fmt"
 	"log"
-	"net/http"
 	"strings"
 
-	"github.com/cli/cli/v2/pkg/cmd/auth/login"
-	"github.com/cli/cli/v2/pkg/cmd/auth/shared"
-	"github.com/cli/cli/v2/pkg/cmd/factory"
-	"github.com/cli/go-gh/pkg/auth"
+	"github.com/cli/go-gh/v2"
+	"github.com/cli/go-gh/v2/pkg/api"
+	"github.com/cli/go-gh/v2/pkg/auth"
 )
 
 // EnsureValidTokenForHost wil check for an existing token. If one is not found,
@@ -25,23 +25,31 @@ func EnsureValidTokenForHost(hostname string, requiredScopes string, version str
 	}
 	return nil
 }
+
 func hasRequiredScopes(hostname string, requiredScopes string, token string) bool {
-	scopes, _ := shared.GetScopes(http.DefaultClient, hostname, token)
+	if token == "" {
+		return false
+	}
+
+	client, err := api.NewRESTClient(api.ClientOptions{
+		Host:      hostname,
+		AuthToken: token,
+	})
+	if err != nil {
+		return false
+	}
+
+	resp, err := client.Request("GET", "", nil)
+	if err != nil {
+		return false
+	}
+	defer resp.Body.Close()
+
+	scopes := resp.Header.Get("X-OAuth-Scopes")
 	return strings.Contains(scopes, requiredScopes)
 }
 
 func loginFlow(hostname string, requiredScopes string, version string) error {
-	cmdFactory := factory.New(version)
-
-	loginCmd := login.NewCmdLogin(cmdFactory, nil)
-	// We do this to not have Cobra redefine the help command and error out
-	loginCmd.PersistentFlags().BoolP("help", "", false, "")
-
-	flag := loginCmd.Flag("scopes")
-	flag.Value.Set(requiredScopes)
-
-	flag = loginCmd.Flag("hostname")
-	flag.Value.Set(hostname)
-
-	return loginCmd.Execute()
+	fmt.Printf("Running login flow for %s with scopes %s\n", hostname, requiredScopes)
+	return gh.ExecInteractive(context.Background(), "auth", "login", "-h", hostname, "-s", requiredScopes)
 }
