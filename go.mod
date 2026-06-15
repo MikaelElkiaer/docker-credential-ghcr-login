@@ -1,4 +1,4 @@
-module github.com/bradschwartz/docker-credential-ghcr-login
+module github.com/mikaelelkiaer/docker-credential-ghcr-login
 
 go 1.26.1
 
