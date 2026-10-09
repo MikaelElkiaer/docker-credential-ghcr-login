@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/cli/go-gh/v2 v2.13.0
-	github.com/docker/docker-credential-helpers v0.9.7
+	github.com/docker/docker-credential-helpers v0.9.10
 )
 
 require (
